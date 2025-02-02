@@ -127,3 +127,28 @@ function logout() {
   setupUI()
   showLogoutAlert()
 }
+
+function userRegister() {
+  let name = document.getElementById("register-name").value
+  let username = document.getElementById("register-username").value
+  let password = document.getElementById("register-password").value
+
+  axios.post('https://tarmeezacademy.com/api/v1/register', {
+    "name": name,
+    "username": username,
+    "password": password
+  })
+  .then(function (response) {
+    localStorage.setItem("token",response.data.token)
+    localStorage.setItem("user",JSON.stringify(response.data.user))
+    document.getElementById("modal-register").classList.add("hidden");
+    
+    setupUI()
+    showLoginAlert()
+  //  hideAlert()
+    console.log(response.data.token);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
