@@ -69,7 +69,8 @@ function userLogin(){
     console.log(response.data.token);
   })
   .catch(function (error) {
-    console.log(error);
+    let errorMessage = error.response.data.message
+    console.log(errorMessage);
   });
 }
 
