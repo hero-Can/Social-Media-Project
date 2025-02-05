@@ -301,6 +301,90 @@
 
     <!-- END Register MODAl -->
 
+
+
+
+
+
+
+<!-- CREATE POST MODAl -->
+
+    <!-- Modal Wrapper -->
+    <div id="modal-post" class="fixed z-10 inset-0 hidden">
+        <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-opacity">
+            <!-- Modal Box -->
+            <div class="flex flex-col items-center justify-between bg-white p-20 rounded w-1/2">
+                <button id="close-modal-btn-post" type="button"
+                        class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="authentication-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+                        Create New Post
+                    </h3>
+                    
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 w-2/3">
+                    <form class="space-y-4" action="#">
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                Title</label>
+                            <input type="text" name="register-name" id="register-name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                placeholder="Enter your name" required />
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                Description</label>
+                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>                    
+                        </div>
+                        <div>
+                            <label for="password"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                Image</label>
+                            <input type="file" name="register-password" id="register-password" placeholder="••••••••"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                required />
+                        </div>
+
+                        <button type="submit"
+                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Post
+                            </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- END CREATE POST MODAl -->
+
+
+
+<!--add post button  -->
+<button id="open-modal-post-btn" class="fixed bottom-0 left-64 m-5 bg-blue-500 text-white p-5 rounded-full drop-shadow-xl hover:bg-sky-700"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
+
+
+
+
+
+
+
+
+
+    
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <!-- Import Axios Library -->
     <script src="../node_modules/axios/dist/axios.min.js"></script>
@@ -327,9 +411,7 @@
         <button id="closeAlert2" class="mt-2 bg-white text-purple-500 px-3 py-1 rounded hover:bg-gray-200">Fermer</button>
     </div>
     
-    <!--add post button  -->
-    <button class="fixed bottom-0 left-64 m-5 bg-blue-500 text-white p-5 rounded-full"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
-
+    
     <script>
         // Récupérer les éléments
         const showAlertBtn = document.getElementById('showAlertBtn');
