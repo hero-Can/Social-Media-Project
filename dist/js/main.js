@@ -95,6 +95,7 @@ function showLogoutAlert() {
 // });
 // }
 
+// very important function who contains generale concepts
 function setupUI() {
   if (localStorage.getItem("token") != null) {
     const userData = localStorage.getItem("user")
@@ -107,8 +108,13 @@ function setupUI() {
 
     // Fill profile bar by user data
     document.getElementById("current_username").textContent =userObject.username;
+    document.getElementById("user-text").textContent =userObject.username;
     let user_email = (userObject.email === null || userObject.email === "null") ? "user@company.com" : userObject.email;
     document.getElementById("current_email").textContent = user_email;
+
+    // show add post button
+    document.getElementById("open-modal-post-btn").classList.remove("hidden");
+
   } else{
     // show login Div & Hide LOgout Div
     document.getElementById("login").style.setProperty("display","block")
@@ -117,6 +123,9 @@ function setupUI() {
     // remove user data from profile bar
     document.getElementById("current_username").textContent ="Username";
     document.getElementById("current_email").textContent = "user@company.com";
+
+    // show add post button
+    document.getElementById("open-modal-post-btn").classList.add("hidden");
 
   }
 }
@@ -147,9 +156,15 @@ function userRegister() {
     setupUI()
     showLoginAlert()
   //  hideAlert()
+  console.log(name,username,password);
     console.log(response.data.token);
   })
   .catch(function (error) {
-    console.log(error);
+    let errorMessage = error.response.data.message
+    console.log(errorMessage);
   });
+}
+
+function createNewPost(){
+  console.log("new post")
 }

@@ -88,7 +88,7 @@
                 <!-- Logout Div -->
                 <div class="logout flex justify-between items-center gap-5" id="logout" >
                     <img src="images/person-1824144_1280.png" class="w-10" alt="">
-                    <span class="user-text">Username</span>
+                    <span class="user-text" id="user-text">Username</span>
                     <button  onclick="logout()" ><span class="text-[#FF9696] font-bold">logout</span></button>
                 </div>
                 
@@ -108,7 +108,7 @@
 
             <!-- Post content -->
             <div class="w-3/4" id="post">
-                <div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
+                <!-- <div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
                     <div class="user-post flex gap-5">
                         <img src="images/person-1824144_1280.png" class="w-14">
                         <div class="username">
@@ -144,7 +144,7 @@
                         exercitationem consequatur ducimus minus magnam ipsum nemo? Itaque, architecto quaerat.</div>
                     <i class="fa-solid fa-comments fa-xl" style="color: #000000;"></i> <span><a href=""
                             class="font-bold px-2"> (3) Comments</a></span>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -344,7 +344,7 @@
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 Description</label>
-                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>                    
+                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write post description here"></textarea>                    
                         </div>
                         <div>
                             <label for="password"
@@ -355,8 +355,8 @@
                                 required />
                         </div>
 
-                        <button type="submit"
-                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Post
+                        <button type="submit" 
+                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="createNewPost()">Add New Post
                             </button>
 
                     </form>
@@ -373,7 +373,7 @@
 
 
 <!--add post button  -->
-<button id="open-modal-post-btn" class="fixed bottom-0 left-64 m-5 bg-blue-500 text-white p-5 rounded-full drop-shadow-xl hover:bg-sky-700"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
+<button id="open-modal-post-btn" class="fixed bottom-0 left-64 m-5 bg-blue-500 text-white p-5 rounded-full drop-shadow-xl hover:bg-sky-700 hidden"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
 
 
 
