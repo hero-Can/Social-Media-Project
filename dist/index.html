@@ -333,29 +333,29 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 w-2/3">
-                    <form class="space-y-4" action="#">
+                    <form class="space-y-4" action="#" id="form-post">
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            <label for="post-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 Title</label>
-                            <input type="text" name="register-name" id="register-name"
+                            <input type="text" name="post-name" id="post-name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="Enter your name" required />
+                                placeholder="Enter your title" required />
                         </div>
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            <label for="post-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 Description</label>
-                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write post description here"></textarea>                    
+                                <textarea id="post-body" name="post-body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write post description here"></textarea>                    
                         </div>
                         <div>
-                            <label for="password"
+                            <label for="post-image"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 Image</label>
-                            <input type="file" name="register-password" id="register-password" placeholder="••••••••"
+                            <input type="file" name="post-image" id="post-image"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
+                               />
                         </div>
 
-                        <button type="submit" 
+                        <button type="submit" id="submit-post"
                             class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="createNewPost()">Add New Post
                             </button>
 

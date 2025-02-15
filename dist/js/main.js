@@ -64,7 +64,8 @@ function userLogin(){
     document.getElementById("modal").classList.add("hidden");
     
     setupUI()
-    showLoginAlert()
+    showAlert("user logged in successfully","#84cc16")
+  //  showLoginAlert()
   //  hideAlert()
     console.log(response.data.token);
   })
@@ -135,7 +136,8 @@ function logout() {
   localStorage.removeItem("token")
   localStorage.removeItem("user")
   setupUI()
-  showLogoutAlert()
+  showAlert("user logouted successfully","#a855f7")
+  // showLogoutAlert()
 }
 
 function userRegister() {
@@ -165,6 +167,83 @@ function userRegister() {
   });
 }
 
-function createNewPost(){
-  console.log("new post")
+// function createNewPost(){
+//   let post_title = document.getElementById("post-title").value
+//   let post_description = document.getElementById("post-description").value
+  
+//   axios.post('https://tarmeezacademy.com/api/v1/posts', {
+//     "title": post_title,
+//     "body": post_description,
+//   },{
+//     headers : {
+//       "authorization" : `Bearer ${localStorage.getItem("token")}`
+//     }
+//   })
+//   .then(function (response) {
+//     console.log(response)
+//     document.getElementById("modal-post").classList.add("hidden");
+//     showAlert("post created successfully","#3b82f6");
+//     })
+//   .catch(function (error) {
+//     let errorMessage = error.response.data.message
+//     showAlert(errorMessage,"red");
+//     console.log(errorMessage);
+//   });
+//   //console.log("post add btn")
+// }
+
+// document.getElementById('form-post').addEventListener('submit', createNewPost());
+//  document.getElementById('submit-post').addEventListener('click', createNewPost);
+
+function createNewPost() {
+  
+  let post_name = document.getElementById("post-name").value;
+  let post_body = document.getElementById("post-body").value;
+  let post_image = document.getElementById("post-image").files[0]; // Assuming you have an <input type="file" id="post-image">
+
+  // Create FormData instance to send form data and image
+  let formData = new FormData();
+  formData.append("title", post_name);
+  formData.append("body", post_body);
+
+  // Append the image to the form data if it exists
+  if (post_image) {
+    formData.append("image", post_image); // Adjust the field name ("image") as required by the API
+  }
+
+  // Get token from localStorage
+  let token = localStorage.getItem("token");
+
+  // Send POST request with FormData
+  axios.post('https://tarmeezacademy.com/api/v1/posts', formData, {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      // "Content-Type": "multipart/form-data", // Important: let axios handle content type
+      // "Accept" : "application/json"
+    }
+  })
+  .then(function (response) {
+    console.log("Response received:", response);
+    document.getElementById("modal-post").classList.add("hidden");
+    showAlert("Post created successfully", "#3b82f6");
+  })
+  .catch(function (error) {
+    console.log("Error during request:", error.response.data.message);
+    let errorMessage = error.response ? error.response.data.message : "Unknown error";
+    showAlert(errorMessage, "red");
+  });
+
+}
+
+
+
+function showAlert(message,color) {
+  const alert = document.getElementById('alert');
+  const p = document.querySelector('#alert p');
+  const btn = document.querySelector('#alert #closeAlert');
+  p.textContent = message
+  alert.style.backgroundColor = color;
+  alert.classList.remove('opacity-0', 'pointer-events-none');
+  alert.classList.add('opacity-100', 'pointer-events-auto');
+  btn.style.color = color;
 }
