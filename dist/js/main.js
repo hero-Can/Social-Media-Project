@@ -19,7 +19,7 @@ function getPosts(){
                             <div class="text-slate-400 font-bold text-sm py-1">${post.created_at}</div>
                         </div>
                     </div>
-                    <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full " alt="">
+                    <img src="${post.image}" class="rounded-xl mt-5 mb-5 h-[600px] w-full " alt="">
                     <div class="post-title font-bold text-xl">${title}</div>
                     <div class="post-description mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Aspernatur illo quibusdam dolorem blanditiis, odit, iusto accusamus quis quas repudiandae iure
@@ -140,32 +140,32 @@ function logout() {
   // showLogoutAlert()
 }
 
-function userRegister() {
-  let name = document.getElementById("register-name").value
-  let username = document.getElementById("register-username").value
-  let password = document.getElementById("register-password").value
+// function userRegister() {
+//   let name = document.getElementById("register-name").value
+//   let username = document.getElementById("register-username").value
+//   let password = document.getElementById("register-password").value
 
-  axios.post('https://tarmeezacademy.com/api/v1/register', {
-    "name": name,
-    "username": username,
-    "password": password
-  })
-  .then(function (response) {
-    localStorage.setItem("token",response.data.token)
-    localStorage.setItem("user",JSON.stringify(response.data.user))
-    document.getElementById("modal-register").classList.add("hidden");
+//   axios.post('https://tarmeezacademy.com/api/v1/register', {
+//     "name": name,
+//     "username": username,
+//     "password": password
+//   })
+//   .then(function (response) {
+//     localStorage.setItem("token",response.data.token)
+//     localStorage.setItem("user",JSON.stringify(response.data.user))
+//     document.getElementById("modal-register").classList.add("hidden");
     
-    setupUI()
-    showLoginAlert()
-  //  hideAlert()
-  console.log(name,username,password);
-    console.log(response.data.token);
-  })
-  .catch(function (error) {
-    let errorMessage = error.response.data.message
-    console.log(errorMessage);
-  });
-}
+//     setupUI()
+//     showLoginAlert()
+//   //  hideAlert()
+//   console.log(name,username,password);
+//     console.log(response.data.token);
+//   })
+//   .catch(function (error) {
+//     let errorMessage = error.response.data.message
+//     console.log(errorMessage);
+//   });
+// }
 
 // function createNewPost(){
 //   let post_title = document.getElementById("post-title").value
@@ -201,6 +201,8 @@ function createNewPost() {
   let post_body = document.getElementById("post-body").value;
   let post_image = document.getElementById("post-image").files[0]; // Assuming you have an <input type="file" id="post-image">
 
+  console.log("Response received:", post_name,post_body);
+  
   // Create FormData instance to send form data and image
   let formData = new FormData();
   formData.append("title", post_name);
@@ -218,14 +220,14 @@ function createNewPost() {
   axios.post('https://tarmeezacademy.com/api/v1/posts', formData, {
     headers: {
       "Authorization": `Bearer ${token}`,
-      // "Content-Type": "multipart/form-data", // Important: let axios handle content type
-      // "Accept" : "application/json"
+      "Content-Type": "multipart/form-data", // Important: let axios handle content type
     }
   })
   .then(function (response) {
     console.log("Response received:", response);
     document.getElementById("modal-post").classList.add("hidden");
     showAlert("Post created successfully", "#3b82f6");
+    getPosts();
   })
   .catch(function (error) {
     console.log("Error during request:", error.response.data.message);
@@ -235,7 +237,49 @@ function createNewPost() {
 
 }
 
+function userRegister() {
+  console.log("Requesting user registration...");
+  
+  let name = document.getElementById("register-name").value;
+  let username = document.getElementById("register-username").value;
+  let password = document.getElementById("register-password").value;
+  let user_image = document.getElementById("register-image").files[0]; // File input
 
+  // Create FormData instance to send form data and image
+  let formData = new FormData();
+  formData.append("name", name);
+  formData.append("username", username);
+  formData.append("password", password);
+  
+  // Append the image if it exists
+  if (user_image) {
+    formData.append("image", user_image); // Ensure the API expects "profile_image"
+  }
+
+  axios.post('https://tarmeezacademy.com/api/v1/register', formData, {
+    headers : {
+      "Content-Type": "multipart/form-data",
+    }
+  })
+    .then(function (response) {
+      console.log("Response received:", response);
+      // Assuming 'response.data.token' and 'response.data.user' are the correct fields
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      // Close modal and update UI
+      document.getElementById("modal-register").classList.add("hidden");
+
+      setupUI();
+      showAlert("User created successfully", "#84cc16");
+
+    })
+    .catch(function (error) {
+      console.log("Error during request:", error.response ? error.response.data.message : error.message);
+      let errorMessage = error.response ? error.response.data.message : "Unknown error";
+      showAlert(errorMessage, "red");
+    });
+}
 
 function showAlert(message,color) {
   const alert = document.getElementById('alert');
@@ -243,6 +287,7 @@ function showAlert(message,color) {
   const btn = document.querySelector('#alert #closeAlert');
   p.textContent = message
   alert.style.backgroundColor = color;
+  alert.style.zIndex = 999;
   alert.classList.remove('opacity-0', 'pointer-events-none');
   alert.classList.add('opacity-100', 'pointer-events-auto');
   btn.style.color = color;
