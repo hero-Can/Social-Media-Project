@@ -1,8 +1,11 @@
 let postContent = document.getElementById("post");
-let current_page =1;
+let current_page = 1;
+let last_page = 1;
+
 window.addEventListener("scroll", function () {
   const endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
-  if (endOfPage) {
+  if (endOfPage && current_page < last_page ) {
+    current_page = current_page+1
      getPosts(current_page+1)
   }
 });
@@ -10,7 +13,8 @@ window.addEventListener("scroll", function () {
 function getPosts(page = 1){
     axios.get(`https://tarmeezacademy.com/api/v1/posts?limit=5&page=${page}`)
   .then(function (response) {
-    let posts = response.data.data
+    let posts = response.data.data;
+    last_page = response.data.meta.last_page;
     for (const post of posts) {
         let title = (post.title === null || post.title === "null") ? "Title" : post.title;
 
