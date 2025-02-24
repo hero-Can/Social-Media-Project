@@ -1,7 +1,14 @@
 let postContent = document.getElementById("post");
+let current_page =1;
+window.addEventListener("scroll", function () {
+  const endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+  if (endOfPage) {
+     getPosts(current_page+1)
+  }
+});
 
-function getPosts(){
-    axios.get('https://tarmeezacademy.com/api/v1/posts')
+function getPosts(page = 1){
+    axios.get(`https://tarmeezacademy.com/api/v1/posts?limit=5&page=${page}`)
   .then(function (response) {
     let posts = response.data.data
     for (const post of posts) {
@@ -62,15 +69,18 @@ function userLogin(){
     localStorage.setItem("token",response.data.token)
     localStorage.setItem("user",JSON.stringify(response.data.user))
     document.getElementById("modal").classList.add("hidden");
-    
+    // Remove URL parameters after successful login
+    // if (window.history.replaceState) {
+    //   window.history.replaceState(null, '', window.location.pathname); // Removes query parameters
+    // }
     setupUI()
     showAlert("user logged in successfully","#84cc16")
-  //  showLoginAlert()
-  //  hideAlert()
+    // location.reload();
     console.log(response.data.token);
   })
   .catch(function (error) {
-    let errorMessage = error.response.data.message
+    let errorMessage = error.response.data.message;
+    showAlert(errorMessage,"red")
     console.log(errorMessage);
   });
 }
@@ -112,6 +122,8 @@ function setupUI() {
     document.getElementById("user-text").textContent =userObject.username;
     let user_email = (userObject.email === null || userObject.email === "null") ? "user@company.com" : userObject.email;
     document.getElementById("current_email").textContent = user_email;
+    let user_image = (userObject.profile_image === null || userObject.profile_image === "null") ? "images/person-1824144_1280.png" : userObject.profile_image;
+    document.getElementById("nav_image").src = user_image;
 
     // show add post button
     document.getElementById("open-modal-post-btn").classList.remove("hidden");
