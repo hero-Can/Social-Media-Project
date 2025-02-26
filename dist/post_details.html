@@ -95,35 +95,75 @@
             </div>
         </div>
         <!-- content -->
-        <div class="content md:container md:mx-auto flex mt-7 rounded-xl gap-7">
-            <!-- Post content -->
-            <div class="w-3/4 md:mx-auto" id="post2">
-                <div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
-                    <div class="user-post flex gap-5">
-                        <img src="images/person-1824144_1280.png" class="w-14">
-                        <div class="username">
-                            <div class="font-bold">Username</div>
-                            <div class="text-slate-400 font-bold text-sm py-1">Hier 19:15</div>
+<!-- content -->
+<div class="content md:container md:mx-auto flex mt-7 rounded-xl gap-7">
+    <!-- Post content -->
+    <div class="w-3/4 md:mx-auto" id="post2">
+        <div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
+            <div class="user-post flex gap-5">
+                <img src="images/person-1824144_1280.png" class="w-14">
+                <div class="username">
+                    <div class="font-bold">Username</div>
+                    <div class="text-slate-400 font-bold text-sm py-1">Hier 19:15</div>
+                </div>
+            </div>
+            <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full" alt="">
+            <div class="post-title font-bold text-xl">Post Title</div>
+            <div class="post-description mb-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo quibusdam dolorem blanditiis,
+                odit, iusto accusamus quis quas repudiandae iure exercitationem consequatur ducimus minus magnam ipsum
+                nemo? Itaque, architecto quaerat.
+            </div>
+
+            <div class="tags flex gap-5 py-4">
+                <div class="bg-red-400 rounded-2xl px-5 py-1">tag1</div>
+                <div class="bg-red-400 rounded-2xl px-5 py-1">tag2</div>
+                <div class="bg-red-400 rounded-2xl px-5 py-1">tag3</div>
+            </div>
+            <i class="fa-solid fa-comments fa-xl" style="color: #000000;"></i>
+            <span><a href="" class="font-bold px-2"> (3) Comments</a></span>
+
+            <!-- Comments Section -->
+            <div class="comments-section mt-6">
+                <!-- Existing Comments -->
+                <div class="existing-comments">
+                    <div class="comment bg-gray-100 rounded-xl p-4 mb-4">
+                        <div class="comment-user flex gap-3">
+                            <img src="images/person-1824144_1280.png" class="w-10 h-10 rounded-full">
+                            <div class="comment-username font-bold">John Doe</div>
+                        </div>
+                        <div class="comment-text mt-2 text-sm text-gray-700">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula turpis non nisi dictum.
                         </div>
                     </div>
-                    <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full " alt="">
-                    <div class="post-title font-bold text-xl">Post Title</div>
-                    <div class="post-description mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aspernatur illo quibusdam dolorem blanditiis, odit, iusto accusamus quis quas repudiandae iure
-                        exercitationem consequatur ducimus minus magnam ipsum nemo? Itaque, architecto quaerat.</div>
-                    
-                    <div class="tags flex gap-5 py-4">
-                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag1</div>
-                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag2</div>
-                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag3</div>
+
+                    <div class="comment bg-gray-100 rounded-xl p-4 mb-4">
+                        <div class="comment-user flex gap-3">
+                            <img src="images/person-1824144_1280.png" class="w-10 h-10 rounded-full">
+                            <div class="comment-username font-bold">Jane Smith</div>
+                        </div>
+                        <div class="comment-text mt-2 text-sm text-gray-700">
+                            Quisque cursus magna id risus feugiat, in euismod turpis varius. Vestibulum ante ipsum primis.
+                        </div>
                     </div>
-                    <i class="fa-solid fa-comments fa-xl" style="color: #000000;"></i> 
-                    <span><a href="" class="font-bold px-2"> (3) Comments</a></span>
-                    
                 </div>
-                
+
+                <!-- New Comment Input -->
+                <div class="new-comment mt-6">
+                    <div class="flex gap-3">
+                        <img src="images/person-1824144_1280.png" class="w-10 h-10 rounded-full">
+                        <input type="text" placeholder="Add a comment..." class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" id="newCommentInput">
+                        <!-- Add Comment Button -->
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl ml-3" id="addCommentButton">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+
     </div>
 
 
