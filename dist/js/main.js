@@ -3,11 +3,11 @@ let current_page = 1;
 let last_page = 1;
 
 window.addEventListener("scroll", function () {
-  const endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
-  if (endOfPage && current_page < last_page ) {
-    current_page = current_page+1
-     getPosts(current_page+1)
-  }
+  // const endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+  // if (endOfPage && current_page < last_page ) {
+  //   current_page = current_page+1
+  //    getPosts(current_page+1)
+  // }
 });
 
 function getPosts(page = 1){

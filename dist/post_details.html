@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post Details</title>
+    <link href="/dist/output.css" rel="stylesheet">
+     <!-- fontawesome cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+ <!-- google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+     href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+     rel="stylesheet">
+</head>
+
+<style>
+ * {
+     box-sizing: border-box;
+ }
+</style>
+
+<body class="overflow-x-hidden">
+
+    <!-- Modal -->
+    <!-- <button 
+  data-dialog-target="modal"
+  class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
+  Open Modal
+</button> -->
+    <div data-dialog-backdrop="modal" data-dialog-backdrop-close="true"
+        class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+        <div data-dialog="modal" class="relative m-4 p-4 w-2/5 min-w-[40%] max-w-[40%] rounded-lg bg-white shadow-sm">
+            <div class="flex shrink-0 items-center pb-4 text-xl font-medium text-slate-800">
+                Its a simple Modal
+            </div>
+            <div class="relative border-t border-slate-200 py-4 leading-normal text-slate-600 font-light">
+                The key to more success is to have a lot of pillows. Put it this
+                way, it took me twenty five years to get these plants, twenty five
+                years of blood sweat and tears, and I&apos;m never giving up,
+                I&apos;m just getting started. I&apos;m up to something. Fan luv.
+            </div>
+            <div class="flex shrink-0 flex-wrap items-center pt-4 justify-end">
+                <button data-dialog-close="true"
+                    class="rounded-md border border-transparent py-2 px-4 text-center text-sm transition-all text-slate-600 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button">
+                    Cancel
+                </button>
+                <button data-dialog-close="true"
+                    class="rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+
+
+
+
+    <div class="bg-[#f2dede] w-screen h-full">
+        <!-- navbar -->
+        <div class="md:container md:mx-auto bg-white flex justify-around items-center p-4 rounded-lg">
+            <div class="logo font-primary text-2xl">Violeto</div>
+            <div class="search relative">
+                <input type="search" class="bg-[#f2dede] w-96 p-[5px] rounded-lg box-border">
+                <a href=""><i class="fa-solid fa-magnifying-glass absolute right-2 top-1/2 transform -translate-y-1/2"
+                        style="color: #000000;"></i></a>
+            </div>
+            <a href="" class="home-icon"><i class="fa-solid fa-house fa-xl" style="color: #000000;"></i></a>
+            <div class="user-content flex justify-between items-center gap-5">
+
+                <!-- <img src="images/person-1824144_1280.png" class="w-10" alt="">
+                <span class="user-text">Username</span> -->
+                <!-- Login Div -->
+                <div class="login" id="login">
+                   <button href="" id="open-modal-btn"><span
+                        class="text-[#FF9696] font-bold border-2 border-[#FF9696] px-5 py-1 rounded-lg hover:bg-[#FF9696] hover:text-zinc-50">login</span></button>
+                   <button id="open-modal-btn-register"><span
+                        class="text-[#FF9696] font-bold border-2 border-[#FF9696] px-5 py-1 rounded-lg hover:bg-[#FF9696] hover:text-zinc-50">Register</span></button>
+                </div>
+                <!-- Logout Div -->
+                <div class="logout flex justify-between items-center gap-5" id="logout" >
+                    <img src="images/person-1824144_1280.png" class="w-10" alt="" id="nav-image">
+                    <span class="user-text" id="user-text">Username</span>
+                    <button  onclick="logout()" ><span class="text-[#FF9696] font-bold">logout</span></button>
+                </div>
+                
+            </div>
+        </div>
+        <!-- content -->
+        <div class="content md:container md:mx-auto flex mt-7 rounded-xl gap-7">
+            <!-- Post content -->
+            <div class="w-3/4 md:mx-auto" id="post2">
+                <div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
+                    <div class="user-post flex gap-5">
+                        <img src="images/person-1824144_1280.png" class="w-14">
+                        <div class="username">
+                            <div class="font-bold">Username</div>
+                            <div class="text-slate-400 font-bold text-sm py-1">Hier 19:15</div>
+                        </div>
+                    </div>
+                    <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full " alt="">
+                    <div class="post-title font-bold text-xl">Post Title</div>
+                    <div class="post-description mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Aspernatur illo quibusdam dolorem blanditiis, odit, iusto accusamus quis quas repudiandae iure
+                        exercitationem consequatur ducimus minus magnam ipsum nemo? Itaque, architecto quaerat.</div>
+                    
+                    <div class="tags flex gap-5 py-4">
+                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag1</div>
+                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag2</div>
+                        <div class="bg-red-400 rounded-2xl px-5 py-1">tag3</div>
+                    </div>
+                    <i class="fa-solid fa-comments fa-xl" style="color: #000000;"></i> 
+                    <span><a href="" class="font-bold px-2"> (3) Comments</a></span>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- Import Axios Library -->
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <!-- API Scripts -->
+    <script src="js/main.js"></script>
+    <!-- Modal script -->
+    <script src="js/modal.js"></script>
+
+</body>
+</html>
