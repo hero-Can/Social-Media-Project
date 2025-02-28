@@ -77,8 +77,11 @@ function userLogin(){
     // if (window.history.replaceState) {
     //   window.history.replaceState(null, '', window.location.pathname); // Removes query parameters
     // }
+    console.log('Before showAlert');
+    showAlert("user logged in successfully","#84cc16");
+    console.log('After showAlert');
     setupUI()
-    showAlert("user logged in successfully","#84cc16")
+    // showAlert("user logged in successfully","#84cc16")
     // location.reload();
     console.log(response.data.token);
   })
