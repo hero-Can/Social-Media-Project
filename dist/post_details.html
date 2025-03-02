@@ -325,6 +325,19 @@
             alert.classList.remove('opacity-100', 'pointer-events-auto');
             alert.classList.add('opacity-0', 'pointer-events-none');
         });
+        
+     if (localStorage.getItem("token") != null) {
+      let userData = localStorage.getItem("user")
+      // Parse the JSON string into an object
+      let userObject = JSON.parse(userData);
+      // Fill profile bar by user data
+      document.getElementById("user-text").textContent =userObject.username;
+      let user_email = (userObject.email === null || userObject.email === "null") ? "user@company.com" : userObject.email;
+      document.getElementById("nav_image").src = user_image;
+      // show add post button
+      document.getElementById("open-modal-post-btn").classList.remove("hidden");
+  
+    }
     </script>
 </body>
 </html>

@@ -22,7 +22,7 @@ function getPosts(page = 1){
           `<div class="bg-red-400 rounded-2xl px-5 py-1">${tag}</div>`
       ).join(''); 
 
-        let element = `<div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7">
+        let element = `<div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7 cursor-pointer" onclick="postClicked()">
                     <div class="user-post flex gap-5">
                         <img src="images/person-1824144_1280.png" class="w-14">
                         <div class="username">
@@ -310,4 +310,8 @@ function showAlert(message,color) {
   alert.classList.remove('opacity-0', 'pointer-events-none');
   alert.classList.add('opacity-100', 'pointer-events-auto');
   btn.style.color = color;
+}
+
+function postClicked(){
+  console.log('post clicked');
 }
