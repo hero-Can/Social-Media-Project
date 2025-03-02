@@ -22,7 +22,7 @@ function getPosts(page = 1){
           `<div class="bg-red-400 rounded-2xl px-5 py-1">${tag}</div>`
       ).join(''); 
 
-        let element = `<div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7 cursor-pointer" onclick="postClicked()">
+        let element = `<div class="post-infos bg-white rounded-xl py-5 px-16 shadow-xl mb-7 cursor-pointer" onclick="postClicked(${post.id})">
                     <div class="user-post flex gap-5">
                         <img src="images/person-1824144_1280.png" class="w-14">
                         <div class="username">
@@ -312,6 +312,8 @@ function showAlert(message,color) {
   btn.style.color = color;
 }
 
-function postClicked(){
-  console.log('post clicked');
+function postClicked(post_id){
+  //  console.log(post_id);
+  window.location = `http://127.0.0.1:5500/dist/post_details.html?post_id=${post_id}`;
+  
 }

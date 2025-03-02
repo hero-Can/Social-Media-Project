@@ -103,8 +103,8 @@
             <div class="user-post flex gap-5">
                 <img src="images/person-1824144_1280.png" class="w-14">
                 <div class="username">
-                    <div class="font-bold">Username</div>
-                    <div class="text-slate-400 font-bold text-sm py-1">Hier 19:15</div>
+                    <div class="font-bold" id="post-uername">Username</div>
+                    <div class="text-slate-400 font-bold text-sm py-1" id="post-created-at">Hier 19:15</div>
                 </div>
             </div>
             <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full" alt="">
@@ -338,6 +338,26 @@
       document.getElementById("open-modal-post-btn").classList.remove("hidden");
   
     }
+    // get query parameters value
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get("post_id");
+    // console.log(id);
+    getPost();
+    function getPost(){
+
+     axios.get(`https://tarmeezacademy.com/api/v1/posts/${id}`)
+        .then(function (response) {
+            // let post = response.data.data;
+             console.log(response.data);
+            
+        })
+        .catch(function (error) {
+            // en cas d’échec de la requête
+            console.log(error);
+        })
+    }
+
+    
     </script>
 </body>
 </html>
