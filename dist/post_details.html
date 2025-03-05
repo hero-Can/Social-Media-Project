@@ -103,13 +103,13 @@
             <div class="user-post flex gap-5">
                 <img src="images/person-1824144_1280.png" class="w-14">
                 <div class="username">
-                    <div class="font-bold" id="post-uername">Username</div>
+                    <div class="font-bold" id="post-username">Username</div>
                     <div class="text-slate-400 font-bold text-sm py-1" id="post-created-at">Hier 19:15</div>
                 </div>
             </div>
             <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full" alt="">
-            <div class="post-title font-bold text-xl">Post Title</div>
-            <div class="post-description mb-5">
+            <div class="post-title font-bold text-xl" id="post-title">Post Title</div>
+            <div class="post-description mb-5" id="post-description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo quibusdam dolorem blanditiis,
                 odit, iusto accusamus quis quas repudiandae iure exercitationem consequatur ducimus minus magnam ipsum
                 nemo? Itaque, architecto quaerat.
@@ -121,12 +121,12 @@
                 <div class="bg-red-400 rounded-2xl px-5 py-1">tag3</div>
             </div>
             <i class="fa-solid fa-comments fa-xl" style="color: #000000;"></i>
-            <span><a href="" class="font-bold px-2"> (3) Comments</a></span>
+            <span><a href="" class="font-bold px-2" id="post-comments-count"> (3) Comments</a></span>
 
             <!-- Comments Section -->
             <div class="comments-section mt-6">
                 <!-- Existing Comments -->
-                <div class="existing-comments">
+                <div class="existing-comments" id="existing-comments">
                     <div class="comment bg-gray-100 rounded-xl p-4 mb-4">
                         <div class="comment-user flex gap-3">
                             <img src="images/person-1824144_1280.png" class="w-10 h-10 rounded-full">
@@ -347,9 +347,30 @@
 
      axios.get(`https://tarmeezacademy.com/api/v1/posts/${id}`)
         .then(function (response) {
-            // let post = response.data.data;
-             console.log(response.data);
-            
+             let post = response.data.data;
+            // let comments = post.comments;
+            let author = post.author;
+            document.getElementById("post-username").innerHTML = author.username;
+            document.getElementById("post-created-at").innerHTML = post.created_at;
+            document.getElementById("post-title").innerHTML = post.title;
+            document.getElementById("post-description").innerHTML = post.body;
+            document.getElementById("post-comments-count").innerHTML = `(${post.comments_count}) comments`;
+            console.log(post.comments)
+            // console.log(post.comments.author.name)
+            // insert comments
+            let comments = post.comments.map(comment => 
+          `<div class="comment bg-gray-100 rounded-xl p-4 mb-4">
+                        <div class="comment-user flex gap-3">
+                            <img src="images/person-1824144_1280.png" class="w-10 h-10 rounded-full">
+                            <div class="comment-username font-bold">${comment.author.name}</div>
+                        </div>
+                        <div class="comment-text mt-2 text-sm text-gray-700">
+                            ${comment.body}
+                        </div>
+                    </div>`
+            ).join(''); 
+
+            document.getElementById("existing-comments").innerHTML = comments
         })
         .catch(function (error) {
             // en cas d’échec de la requête
