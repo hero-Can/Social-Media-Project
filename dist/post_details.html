@@ -107,7 +107,7 @@
                     <div class="text-slate-400 font-bold text-sm py-1" id="post-created-at">Hier 19:15</div>
                 </div>
             </div>
-            <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full" alt="">
+            <img src="images/img3.jpg" class="rounded-xl mt-5 mb-5 h-[600px] w-full" alt="" id="post-img">
             <div class="post-title font-bold text-xl" id="post-title">Post Title</div>
             <div class="post-description mb-5" id="post-description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo quibusdam dolorem blanditiis,
@@ -115,7 +115,7 @@
                 nemo? Itaque, architecto quaerat.
             </div>
 
-            <div class="tags flex gap-5 py-4">
+            <div class="tags flex gap-5 py-4" id="tags">
                 <div class="bg-red-400 rounded-2xl px-5 py-1">tag1</div>
                 <div class="bg-red-400 rounded-2xl px-5 py-1">tag2</div>
                 <div class="bg-red-400 rounded-2xl px-5 py-1">tag3</div>
@@ -355,6 +355,11 @@
             document.getElementById("post-title").innerHTML = post.title;
             document.getElementById("post-description").innerHTML = post.body;
             document.getElementById("post-comments-count").innerHTML = `(${post.comments_count}) comments`;
+            document.getElementById("post-img").src = post.image;
+            let tags = post.tags.map(tag => 
+          `<div class="bg-red-400 rounded-2xl px-5 py-1">${tag}</div>`
+             ).join(''); 
+            document.getElementById("tags").innerHTML = tags;
             console.log(post.comments)
             // console.log(post.comments.author.name)
             // insert comments

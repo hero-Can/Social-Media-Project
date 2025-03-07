@@ -26,7 +26,7 @@ function getPosts(page = 1){
                     <div class="user-post flex gap-5">
                         <img src="images/person-1824144_1280.png" class="w-14">
                         <div class="username">
-                            <div class="font-bold">${post.author.name}</div>
+                            <div class="font-bold">${post.author.username}</div>
                             <div class="text-slate-400 font-bold text-sm py-1">${post.created_at}</div>
                         </div>
                     </div>
